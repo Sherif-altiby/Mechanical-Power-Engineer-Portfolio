@@ -1,6 +1,15 @@
 @import "tailwindcss";
 
- 
+html {
+  scroll-behavior: smooth;
+}
+
+/* To ensure it works with the GSAP overflows you have */
+body {
+  overflow-x: hidden;
+  height: auto;
+}
+
 .transform-style-3d {
   transform-style: preserve-3d;
 }
@@ -9,4 +18,45 @@
 }
 .floating-accent {
   transform: translateZ(60px); /* Lifts floating icons even higher */
+}
+
+/* 1. Stop the browser from jumping */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+/* 2. Ensure the container doesn't have conflicting overflows */
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  /* This prevents the "double scrollbar" bug */
+  overflow-x: hidden !important;
+}
+
+/* 3. Smooth out image rendering during scroll */
+img {
+  will-change: transform;
+}
+.spin-ring-inner,
+.spin-ring-outer,
+.user-card {
+  transform: translateZ(0); /* Forces GPU layer */
+  backface-visibility: hidden;
+}
+
+@keyframes scan {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(300%);
+  }
+}
+.animate-scan {
+  animation: scan 3s linear infinite;
 }
