@@ -1,8 +1,8 @@
 // components/SmoothScroll.tsx
 "use client";
-import { ReactLenis } from "@studio-freight/react-lenis";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import ReactLenis from "lenis/react";
 
 export default function SmoothScroll({ children }: { children: any }) {
   const lenisRef = useRef<any>(null);
