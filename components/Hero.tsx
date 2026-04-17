@@ -11,7 +11,8 @@ import {
   TbMail,
 } from "react-icons/tb";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
+
 
 const BIMIcon = () => (
   <svg
@@ -72,9 +73,9 @@ const ModernHero = () => {
   ];
 
   const socialLinks = [
-    { icon: <TbBrandLinkedin />, href: "#", label: "LinkedIn" },
-    { icon: <TbBrandFacebook />, href: "#", label: "Facebook" },
-    { icon: <TbMail />, href: "mailto:your@email.com", label: "Gmail" },
+    { icon: <TbBrandLinkedin />, href: "https://www.linkedin.com/in/mohamed-hadhoud-360844293/", label: "LinkedIn" },
+    { icon: <TbBrandFacebook />, href: "https://www.facebook.com/share/1GQuQ8fbxZ/", label: "Facebook" },
+    { icon: <TbMail />, href: "mailto:meltiebe@gmail.com", label: "Gmail" },
   ];
 
   useEffect(() => {
@@ -323,7 +324,7 @@ const ModernHero = () => {
           {/* Social Links */}
           <div className="flex items-center justify-center lg:justify-start gap-4 pt-4">
             {socialLinks.map((social, i) => (
-              <a
+              <Link
                 key={i}
                 ref={(el) => {
                   socialRefs.current[i] = el;
@@ -334,7 +335,7 @@ const ModernHero = () => {
                 <div className="text-xl text-white hover:text-[#d4ff3f] transition-colors">
                   {social.icon}
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
