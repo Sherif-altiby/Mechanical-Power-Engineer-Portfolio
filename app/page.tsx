@@ -7,7 +7,7 @@ import ProjectsSection from "@/components/Projects";
 const page = () => {
   return (
     <main>
-      <Navbar />
+     
       <HeroSection />
       <ProjectsSection />
       <IndustrialExperience />

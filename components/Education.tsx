@@ -137,14 +137,7 @@ const TechnicalAcademicLog: React.FC = () => {
           ))}
         </div>
 
-        {/* FOOTER METRICS */}
-        <div className="mt-20 flex justify-between items-center opacity-20">
-          <div className="h-[1px] w-1/3 bg-zinc-800" />
-          <p className="text-[9px] font-mono tracking-[0.5em] text-zinc-500 uppercase italic">
-            End_of_Record
-          </p>
-          <div className="h-[1px] w-1/3 bg-zinc-800" />
-        </div>
+       
       </div>
     </section>
   );

@@ -1,41 +1,14 @@
 "use client";
 import React, { useEffect, useRef } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { FaArrowRight, FaGithub } from "react-icons/fa6";
+import { FaArrowRight } from "react-icons/fa6";
 import { TbPointFilled } from "react-icons/tb";
+import { projects } from "@/data";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const projects = [
-  {
-    title: "Thermal Grid Alpha",
-    category: "Thermodynamics",
-    id: "XP_01",
-    description:
-      "Optimized heat distribution for industrial-scale power plants using AI-driven predictive modeling.",
-    tech: ["Next.js", "Python", "GSAP"],
-    accent: "#d4ff3f",
-  },
-  {
-    title: "Load-Balancer V2",
-    category: "Power Systems",
-    id: "XP_02",
-    description:
-      "Real-time monitoring and automated load balancing for high-voltage smart grids.",
-    tech: ["TypeScript", "Node.js", "Prisma"],
-    accent: "#3b82f6",
-  },
-  {
-    title: "Eco-Generator",
-    category: "Energy Conversion",
-    id: "XP_03",
-    description:
-      "A digital twin interface for tracking energy efficiency in waste-to-power systems.",
-    tech: ["Three.js", "React", "Tailwind"],
-    accent: "#a855f7",
-  },
-];
 
 const ExperiencePinStack = () => {
   const triggerRef = useRef<HTMLDivElement>(null);
@@ -44,26 +17,21 @@ const ExperiencePinStack = () => {
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray<HTMLElement>(".project-card");
 
-      // Pin the main container
       ScrollTrigger.create({
         trigger: triggerRef.current,
-        start: "top 5%",
-        end: `+=${(cards.length - 1) * 100}%`, // Scroll duration based on card count
+        start: "top top",
+        end: `+=${(cards.length - 1) * 100}%`,
         pin: true,
         scrub: 2,
-        anticipatePin: 1,
       });
 
       cards.forEach((card, index) => {
         if (index > 0) {
-          // Slide cards UP from the bottom
           gsap.fromTo(
             card,
-            { y: "100vh" },
+            { y: "110vh" },
             {
               y: "0vh",
-              ease: "none",
-              duration: 2,
               scrollTrigger: {
                 trigger: triggerRef.current,
                 start: () => `${index * (100 / (cards.length - 1))}% top`,
@@ -73,113 +41,96 @@ const ExperiencePinStack = () => {
             },
           );
         }
-
-        // Scale down the PREVIOUS card as the NEW one arrives
-        if (index < cards.length - 1) {
-          gsap.to(card, {
-            scale: 0.9,
-            opacity: 0.4,
-            filter: "blur(10px)",
-            ease: "none",
-            scrollTrigger: {
-              trigger: triggerRef.current,
-              start: () => `${(index + 1) * (100 / (cards.length - 1))}% top`,
-              end: () => `${(index + 2) * (100 / (cards.length - 1))}% top`,
-              scrub: 3,
-            },
-          });
-        }
       });
     }, triggerRef);
-
     return () => ctx.revert();
   }, []);
 
   return (
-    <div ref={triggerRef} className="bg-[#050505] overflow-hidden">
-      <div className="h-screen w-full relative flex items-center justify-center overflow-hidden">
-        {/* BACKGROUND UI ELEMENTS */}
-        <div className="absolute top-12 left-12 flex items-center gap-4  ">
-          <div className="text-orange-500 font-black text-xl italic tracking-tighter">
+    <div ref={triggerRef} className="bg-[#050505] relative antialiased">
+      <div className="h-screen w-full">
+        <div className="flex items-center px-5 gap-4 mb-12 ">
+          <div className="text-orange-500 font-black text-2xl italic tracking-tighter">
             / <span className="text-white"> Projects </span>
           </div>
         </div>
+        <div className=" flex items-center justify-center px-6">
+          <div className="relative w-full max-w-5xl h-[450px] lg:h-[500px]">
+            {projects.map((project) => (
+              <div
+                key={project.id}
+                className="project-card absolute inset-0 z-10"
+              >
+                <div className="w-full h-full bg-[#0a0a0a] border border-zinc-900 rounded-[1.5rem] overflow-hidden shadow-2xl grid grid-cols-1 lg:grid-cols-2">
+                  {/* Visual Section: Refined Aspect */}
+                  <Link
+                    href={`/projects/${project.id}`}
+                    className="relative group overflow-hidden border-b lg:border-b-0 lg:border-r border-zinc-900 cursor-pointer h-48 lg:h-full"
+                  >
+                    <Image
+                      src={`/${project.image}`}
+                      alt={project.title}
+                      fill
+                      className="object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105 transition-all duration-1000"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
+                    <div className="absolute bottom-6 left-6">
+                      <div className="flex items-center gap-2 px-3 py-1 bg-white/10 backdrop-blur-md border border-white/10 rounded-full">
+                        <div className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
+                        <span className="text-white text-[9px] font-bold uppercase tracking-widest">
+                          Open Case Study
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
 
-        {/* CARDS CONTAINER */}
-        <div className="relative w-full max-w-6xl h-[600px] flex items-center justify-center">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="project-card absolute inset-0 px-6"
-              style={{ zIndex: index }}
-            >
-              <div className="bg-[#0a0a0a] border border-zinc-800 rounded-3xl overflow-hidden h-full shadow-[0_-20px_60px_rgba(0,0,0,0.9)] grid grid-cols-1 lg:grid-cols-2">
-                {/* LEFT SIDE: VISUAL */}
-                <div className="relative bg-[#0d0d0d] flex items-center justify-center border-r border-zinc-900 overflow-hidden">
-                  <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#333_1px,transparent_1px)] [background-size:20px_20px]" />
-                  <span className="text-white/5 font-black text-[12vw] italic select-none">
-                    {project.id}
-                  </span>
-                  <div
-                    className="absolute w-40 h-40 rounded-full blur-[100px] opacity-20"
-                    style={{ backgroundColor: project.accent }}
-                  />
-                </div>
-
-                {/* RIGHT SIDE: CONTENT */}
-                <div className="p-8 lg:p-16 flex flex-col justify-center">
-                  <div className="flex items-center gap-3 mb-6">
-                    <TbPointFilled style={{ color: project.accent }} />
-                    <span className="text-zinc-500 font-mono text-[10px] uppercase tracking-[0.4em]">
-                      {project.category}
-                    </span>
-                  </div>
-
-                  <h2 className="text-5xl lg:text-7xl font-black text-white uppercase tracking-tighter leading-none mb-6">
-                    {project.title}
-                  </h2>
-
-                  <p className="text-zinc-400 text-lg font-light leading-relaxed italic mb-8 border-l border-zinc-800 pl-6">
-                    {project.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2 mb-10">
-                    {project.tech.map((t) => (
-                      <span
-                        key={t}
-                        className="px-3 py-1 bg-zinc-900 border border-zinc-800 text-[9px] text-zinc-500 font-mono uppercase tracking-widest"
-                      >
-                        {t}
+                  {/* Content Section: Tightened Typography */}
+                  <div className="p-8 lg:p-12 flex flex-col justify-center bg-[#0d0d0d]">
+                    <div className="flex items-center gap-2 mb-4">
+                      <TbPointFilled className="text-orange-600 size-3" />
+                      <span className="text-zinc-600 font-mono text-[9px] uppercase tracking-[0.3em]">
+                        System_Report
                       </span>
-                    ))}
-                  </div>
+                    </div>
 
-                  <div className="flex items-center gap-8">
-                    <button className="flex items-center gap-3 text-white text-[11px] font-bold uppercase tracking-widest group">
-                      <span>Launch_Project</span>
-                      <FaArrowRight
-                        className="group-hover:translate-x-2 transition-transform"
-                        style={{ color: project.accent }}
-                      />
-                    </button>
-                    <a
-                      href="#"
-                      className="text-zinc-700 hover:text-white transition-colors border-l border-zinc-900 pl-8"
+                    <h2 className="text-3xl lg:text-5xl font-black text-white uppercase tracking-tighter leading-tight mb-4">
+                      {project.title}
+                    </h2>
+
+                    <p className="text-zinc-400 text-sm lg:text-base font-light leading-relaxed line-clamp-3 mb-8 border-l-2 border-orange-600/30 pl-4">
+                      {project.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 mb-8">
+                      {project.category.slice(0, 3).map((cat, idx) => (
+                        <span
+                          key={idx}
+                          className="text-[8px] font-mono text-zinc-500 border border-zinc-800 px-2 py-0.5 rounded uppercase"
+                        >
+                          {cat.name}
+                        </span>
+                      ))}
+                    </div>
+
+                    <Link
+                      href={`/projects/${project.id}`}
+                      className="flex items-center gap-4 text-white text-[10px] font-bold uppercase tracking-[0.2em] group w-fit"
                     >
-                      <FaGithub size={20} />
-                    </a>
+                      <span className="group-hover:text-orange-500 transition-colors">
+                        Access_Technical_Dossier
+                      </span>
+                      <div className="w-8 h-8 rounded-full border border-zinc-800 flex items-center justify-center group-hover:bg-orange-500 group-hover:border-orange-500 transition-all duration-300">
+                        <FaArrowRight
+                          size={12}
+                          className="group-hover:translate-x-0.5 transition-transform"
+                        />
+                      </div>
+                    </Link>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-
-        {/* BOTTOM UI ELEMENTS */}
-        <div className="absolute bottom-12 right-12 opacity-30">
-          <p className="text-[9px] font-mono text-zinc-600 uppercase tracking-[0.5em]">
-            2026_SHERIF_ALTIBY // DEV_CORE
-          </p>
+            ))}
+          </div>
         </div>
       </div>
     </div>
