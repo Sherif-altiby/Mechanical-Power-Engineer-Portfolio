@@ -62,10 +62,15 @@ const TabbedTerminalExperience: React.FC = () => {
     <section className="min-h-[600px] bg-[#0A0A0A] text-zinc-400 p-6 font-sans">
       
       {/* HEADER SECTION */}
-      <div className="flex items-center  gap-4 mb-12 ">
-        <div className="text-orange-500 font-black text-2xl italic tracking-tighter">/ <span className="text-white" > Experience </span></div>
-      </div>
-
+      <div className="max-w-6xl mx-auto w-full px-6 mb-12 z-50">
+          <div className="flex items-center gap-6">
+            <h2 className="text-white font-black text-3xl uppercase tracking-tighter italic">
+              <span className="text-[#d4ff3f]">/</span> Work Experience
+            </h2>
+            <div className="h-[1px] flex-1 bg-white/10" />
+            
+          </div>
+        </div>
       <div className="flex flex-col md:flex-row gap-12 max-w-6xl mx-auto min-h-[400px]">
         
         {/* LEFT NAV RAIL */}

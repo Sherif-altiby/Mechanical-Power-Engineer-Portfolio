@@ -1,17 +1,16 @@
+"use client";
 import EducationSection from "@/components/Education";
 import IndustrialExperience from "@/components/Experience";
 import HeroSection from "@/components/Hero";
-import Navbar from "@/components/Nav";
 import ProjectsSection from "@/components/Projects";
 
 const page = () => {
   return (
     <main>
-     
       <HeroSection />
-      <ProjectsSection />
       <IndustrialExperience />
-      <EducationSection/>
+      <ProjectsSection />
+      <EducationSection />
     </main>
   );
 };

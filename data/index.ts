@@ -30,4 +30,32 @@ export const projects = [
       },
     ],
   },
+  {
+    id: "02",
+    image: 'elbaloushi.png',
+    title: "Villa Badrya Elbalooshi",
+    description: "",
+    category: [
+      {
+        name: "Villa Badrya Elbalooshi",
+        description:
+          "",
+        pdf: ["/P-08-0195.pdf"],
+      },
+    ],
+  },
+  {
+    id: "03",
+    image: '',
+    title: "villa Mousa",
+    description: "",
+    category: [
+      {
+        name: "villa Mousa",
+        description:
+          "",
+        pdf: ["/P-04-0195.pdf"],
+      },
+    ],
+  },
 ];

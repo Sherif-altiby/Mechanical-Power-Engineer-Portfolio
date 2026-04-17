@@ -58,11 +58,17 @@ const TechnicalAcademicLog: React.FC = () => {
 
   return (
     <section ref={containerRef} className="bg-[#020202] py-32 px-6">
-      <div className="flex items-center gap-4 mb-10 ">
-        <div className="text-orange-500 font-black text-2xl italic tracking-tighter">
-          / <span className="text-white">EDUCATION</span>
+      
+       <div className="max-w-6xl mx-auto w-full px-6 mb-12 z-50">
+          <div className="flex items-center gap-6">
+            <h2 className="text-white font-black text-3xl uppercase tracking-tighter italic">
+              <span className="text-[#d4ff3f]">/</span> Education & Academic Log
+            </h2>
+            <div className="h-[1px] flex-1 bg-white/10" />
+            
+          </div>
         </div>
-      </div>
+      
       <div className="max-w-6xl mx-auto">
         {/* SECTION HEADER */}
 

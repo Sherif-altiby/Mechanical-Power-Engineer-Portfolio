@@ -8,6 +8,7 @@ html {
 body {
   overflow-x: hidden;
   height: auto;
+  background-color: #000;
 }
 
 .transform-style-3d {
