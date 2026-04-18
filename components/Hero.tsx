@@ -275,7 +275,7 @@ const ModernHero = () => {
         }}
       />
 
-      <div className="container max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center z-10">
+      <div className="container max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 md:gap-12 items-center z-10">
         {/* Left Side */}
         <div className="order-2 lg:order-1 space-y-8 text-center lg:text-left">
           <div
@@ -291,7 +291,7 @@ const ModernHero = () => {
             </span>
           </div>
 
-          <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.85] uppercase">
+          <h1 className="text-3xl md:text-8xl font-black tracking-tighter leading-[0.85] uppercase">
             <div ref={title1Ref}>Mohamed</div>
             <div
               ref={title2Ref}
@@ -305,14 +305,14 @@ const ModernHero = () => {
           <div className="flex flex-col gap-4">
             <p
               ref={subtitleRef}
-              className="text-xl md:text-3xl text-slate-200 font-light tracking-tight"
+              className=" md:text-3xl text-slate-200 font-light tracking-tight"
             >
               Mechanical Engineer <span className="text-zinc-600 px-2">//</span>{" "}
               <span className="text-[#d4ff3f]">BIM Modeler</span>
             </p>
             <p
               ref={descriptionRef}
-              className="text-slate-500 text-base md:text-lg max-w-lg mx-auto lg:mx-0 leading-relaxed font-light"
+              className="text-slate-500 text-basec  text-sm md:text-lg max-w-lg mx-auto lg:mx-0 leading-relaxed font-light"
             >
               I am a passionate Mechanical Power Engineer with experience in MEP
               systems, including HVAC, Firefighting, and Plumbing. Skilled in
@@ -322,7 +322,7 @@ const ModernHero = () => {
           </div>
 
           {/* Social Links */}
-          <div className="flex items-center justify-center lg:justify-start gap-4 pt-4">
+          <div className="flex items-center justify-center lg:justify-start gap-2 md:gap-4 md:pt-4">
             {socialLinks.map((social, i) => (
               <Link
                 key={i}
@@ -330,7 +330,7 @@ const ModernHero = () => {
                   socialRefs.current[i] = el;
                 }}
                 href={social.href}
-                className="relative p-4 bg-zinc-900 border border-white/10 rounded-2xl hover:border-[#d4ff3f]/50 transition-colors cursor-pointer"
+                className="relative p-2 md:p-4 bg-zinc-900 border border-white/10 rounded-lg md:rounded-2xl hover:border-[#d4ff3f]/50 transition-colors cursor-pointer"
               >
                 <div className="text-xl text-white hover:text-[#d4ff3f] transition-colors">
                   {social.icon}
@@ -375,8 +375,8 @@ const ModernHero = () => {
                 }}
                 className={`absolute ${prog.pos} z-20`}
               >
-                <div className="p-4 bg-[#111]/90 backdrop-blur-xl border border-white/10 rounded-2xl flex flex-col items-center hover:border-[#d4ff3f]/30 transition-colors cursor-pointer">
-                  <div className={`text-2xl ${prog.color}`}>{prog.icon}</div>
+                <div className="p-2 md:p-4 bg-[#111]/90 backdrop-blur-xl border border-white/10 rounded-lg md:rounded-2xl flex flex-col items-center hover:border-[#d4ff3f]/30 transition-colors cursor-pointer">
+                  <div className={` text-sm md:text-2xl ${prog.color}`}>{prog.icon}</div>
                   <span className="text-[7px] font-mono font-bold text-zinc-500 uppercase tracking-[0.2em]">
                     {prog.name}
                   </span>
@@ -384,7 +384,7 @@ const ModernHero = () => {
               </div>
             ))}
 
-            <div
+            {/* <div
               ref={progressRef}
               className="absolute -bottom-8 left-6 p-5 bg-[#0f0f0f]/90 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] z-20 flex items-center gap-5"
             >
@@ -392,7 +392,7 @@ const ModernHero = () => {
               <div className="h-1.5 w-24 bg-white/5 rounded-full overflow-hidden">
                 <div className="h-full w-[98%] bg-[#d4ff3f] animate-pulse" />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

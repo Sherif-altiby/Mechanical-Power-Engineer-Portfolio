@@ -2,32 +2,14 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { education } from "@/data";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const TechnicalAcademicLog: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const education = [
-    {
-      uni: "Mansoura University",
-      degree: "Mechanical Engineering",
-      period: "2022 — PRES",
-      code: "MNSR-01",
-      details: ["Dynamics", "Material Science", "CAD/CAM"],
-      status: "ACTIVE_ENROLLMENT",
-      accent: "#3b82f6",
-    },
-    {
-      uni: "Port Said University",
-      degree: "GENERAL ENGINEERING",
-      period: "2021 — 2022",
-      code: "PRSD-02",
-      details: ["Statics", "Calculus", "Physics"],
-      status: "COMPLETED_LOG",
-      accent: "#10b981",
-    },
-  ];
+
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -61,7 +43,7 @@ const TechnicalAcademicLog: React.FC = () => {
       
        <div className="max-w-6xl mx-auto w-full px-6 mb-12 z-50">
           <div className="flex items-center gap-6">
-            <h2 className="text-white font-black text-3xl uppercase tracking-tighter italic">
+            <h2 className="text-white font-black md:text-3xl uppercase tracking-tighter italic">
               <span className="text-[#d4ff3f]">/</span> Education & Academic Log
             </h2>
             <div className="h-[1px] flex-1 bg-white/10" />
@@ -80,9 +62,7 @@ const TechnicalAcademicLog: React.FC = () => {
             >
               {/* SIDEBAR METADATA */}
               <div className="bg-zinc-950 border-r border-zinc-900 flex flex-col items-center justify-between py-8 text-zinc-700 font-mono">
-                <span className="text-[10px] tracking-[0.3em] rotate-[-90deg] whitespace-nowrap">
-                  NODE_{item.code}
-                </span>
+                
                 <div className="w-1 h-12 bg-zinc-900 rounded-full overflow-hidden">
                   <div
                     className="w-full h-full origin-top transition-transform duration-700 group-hover:scale-y-100 scale-y-0"
@@ -95,23 +75,17 @@ const TechnicalAcademicLog: React.FC = () => {
               </div>
 
               {/* MAIN CONTENT */}
-              <div className="p-8 lg:p-12 relative">
+              <div className="p-3 md:p-8 lg:p-12 relative">
                 {/* STATUS TAG */}
-                <div className="absolute top-0 right-0 p-4">
-                  <span className="text-[8px] font-mono tracking-widest px-2 py-1 border border-zinc-800 text-zinc-500 uppercase">
-                    {item.status}
-                  </span>
-                </div>
-
                 <div className="grid grid-cols-1 lg:grid-cols-[1fr_200px] gap-12 items-end">
                   <div className="space-y-6">
                     <div>
-                      <h3 className="text-4xl lg:text-6xl font-black text-white uppercase tracking-tighter leading-none group-hover:text-orange-500 transition-colors duration-500">
+                      <h3 className="md:text-4xl lg:text-6xl font-black text-white uppercase tracking-tighter leading-none group-hover:text-orange-500 transition-colors duration-500">
                         {item.uni}
                       </h3>
                       <p className="text-blue-500 font-mono text-xs tracking-[0.2em] mt-4 uppercase font-bold italic">
                         {item.degree}
-                      </p>
+                      </p>                                                         
                     </div>
 
                     <div className="flex flex-wrap gap-2">
@@ -130,7 +104,7 @@ const TechnicalAcademicLog: React.FC = () => {
                     <p className="text-[9px] font-mono text-zinc-600 mb-2 tracking-widest uppercase">
                       TEMPORAL_LOG
                     </p>
-                    <p className="text-3xl font-black text-white italic tracking-tighter">
+                    <p className="md:text-3xl font-black text-white italic tracking-tighter">
                       {item.period}
                     </p>
                   </div>

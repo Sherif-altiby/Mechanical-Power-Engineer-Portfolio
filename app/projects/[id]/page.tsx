@@ -54,7 +54,7 @@ const Page = async ({ params }: Props) => {
                       target="_blank"
                       className="flex items-center justify-between p-4 bg-zinc-900/40 border border-zinc-800 rounded-xl hover:border-orange-500/50 group transition-all"
                     >
-                      <div className="flex items-center gap-3 overflow-hidden">
+                      <div className="flex items-center  overflow-hidden">
                         <FaFilePdf className="text-zinc-700 group-hover:text-orange-500 transition-colors" />
                         <span className="text-xs font-mono text-zinc-400 group-hover:text-zinc-200 truncate">
                           {file.split('/').pop()}
@@ -67,7 +67,7 @@ const Page = async ({ params }: Props) => {
               </div>
 
               <div className="lg:col-span-8 bg-zinc-900/10 border border-zinc-900 p-8 lg:p-16 rounded-[3rem]">
-                <p className="text-zinc-300 text-lg lg:text-xl font-light leading-relaxed first-letter:text-5xl first-letter:text-orange-500 first-letter:font-black first-letter:mr-3">
+                <p className="text-zinc-300 text-lg lg:text-xl font-light leading-relaxed   ">
                   {cat.description}
                 </p>
               </div>

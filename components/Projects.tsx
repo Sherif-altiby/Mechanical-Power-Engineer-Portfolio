@@ -20,7 +20,7 @@ const ExperienceFlexStack = () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: triggerRef.current,
-          start: "top top",
+          start: "center center",
           // Giving enough scroll room for all cards to cycle
           end: `+=${cards.length * 1000}`, 
           pin: true,
@@ -62,11 +62,11 @@ const ExperienceFlexStack = () => {
   }, []);
 
   return (
-    <div ref={componentRef} className="bg-[#050505]">
+    <div ref={componentRef} className="bg-[#050505] ">
       <section ref={triggerRef} className="h-screen w-full flex flex-col justify-center overflow-hidden relative">
         
         {/* Section Header */}
-        <div className="max-w-6xl mx-auto w-full px-6 mb-12 z-50">
+        {/* <div className="max-w-6xl mx-auto w-full px-6 mb-12 z-50">
           <div className="flex items-center gap-6">
             <h2 className="text-white font-black text-3xl uppercase tracking-tighter italic">
               <span className="text-[#d4ff3f]">/</span> Selected Projects
@@ -74,7 +74,7 @@ const ExperienceFlexStack = () => {
             <div className="h-[1px] flex-1 bg-white/10" />
             
           </div>
-        </div>
+        </div> */}
 
         {/* Stacking Deck */}
         <div className="relative flex items-center justify-center px-6">
@@ -82,10 +82,10 @@ const ExperienceFlexStack = () => {
             {projects.map((project, i) => (
               <div
                 key={project.id}
-                className="project-card absolute inset-0 will-change-transform"
+                className="project-card absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full will-change-transform"
                 style={{ zIndex: i }}
               >
-                <div className="card-content w-full h-100">
+                <div className="card-content w-full md:h-100">
                   <div className="w-full h-full bg-[#0a0a0a] border border-white/5 rounded-[2.5rem] overflow-hidden shadow-2xl grid grid-cols-1 lg:grid-cols-2">
                     
                     {/* Image Section */}
@@ -101,14 +101,13 @@ const ExperienceFlexStack = () => {
                     </div>
 
                     {/* Content Section */}
-                    <div className="p-10 lg:p-16 flex flex-col justify-center bg-[#0d0d0d] relative">
+                    <div className="p-3 lg:p-7 flex flex-col justify-center bg-[#0d0d0d] relative">
                       <span className="text-[#d4ff3f] font-mono text-[10px] mb-4 tracking-[0.3em]">
-                        DATA_SLOT_0{i + 1}
-                      </span>
-                      <h3 className="text-4xl lg:text-5xl font-black text-white uppercase tracking-tighter leading-none mb-6">
+                       </span>
+                      <h3 className="md:text-4xl lg:text-5xl font-black text-white uppercase tracking-tighter leading-none mb-2 md:mb-6">
                         {project.title}
                       </h3>
-                      <p className="text-zinc-500 text-sm leading-relaxed mb-8 max-w-sm">
+                      <p className="text-zinc-500 text-sm leading-relaxed mb-3 md:mb-8 max-w-sm">
                         {project.description}
                       </p>
                       
@@ -125,8 +124,7 @@ const ExperienceFlexStack = () => {
         </div>
       </section>
       
-      {/* Scroll Buffer for the following section */}
-      <div className="h-[20vh] bg-[#050505]" />
+      
     </div>
   );
 };
