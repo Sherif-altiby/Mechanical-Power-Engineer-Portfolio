@@ -19,7 +19,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 sm:px-12 flex items-center justify-between">
         
         {/* LOGO: Minimal & Clean */}
-        <div className="group cursor-pointer">
+        <Link href="/" className="group cursor-pointer">
           <div className="flex items-center gap-1.5">
             <span className="text-white font-bold tracking-tighter text-[10px] md:text-xl uppercase leading-none">
               Mohamed
@@ -31,7 +31,7 @@ const Navbar = () => {
           <p className="text-[8px] font-mono text-zinc-600 tracking-[0.3em] uppercase mt-1 group-hover:text-[#d4ff3f] transition-colors">
             Mechanical_BIM
           </p>
-        </div>
+        </Link>
 
         {/* SIMPLIFIED CTA */}
         <div className="flex items-center">
