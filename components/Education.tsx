@@ -39,7 +39,7 @@ const TechnicalAcademicLog: React.FC = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="bg-[#020202] py-32 px-6">
+    <section ref={containerRef} className="bg-[#020202]  py-10 px-6">
       
        <div className="max-w-6xl mx-auto w-full px-6 mb-12 z-50">
           <div className="flex items-center gap-6">
